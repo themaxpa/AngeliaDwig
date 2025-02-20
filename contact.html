@@ -150,47 +150,41 @@
             </div><!-- End Info Item -->
 
           </div>
-
-          <form action="https://api.web3forms.com/submit" method="post"
-            class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-            <div class="row gy-4">
-
-              <input type="hidden" name="access_key"
-                value="8e5b6033-c8f5-4372-a8fa-4ece4c8b61e1">
-
-              <div class="col-md-6">
-                <input type="text" name="name" class="form-control"
-                  placeholder="Your Name" required>
-              </div>
-
-              <div class="col-md-6 ">
-                <input type="email" class="form-control" name="email"
-                  placeholder="Your Email" required>
-              </div>
-
-              <div class="col-md-12">
-                <input type="text" class="form-control" name="subject"
-                  placeholder="Subject" required>
-              </div>
-
-              <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="6"
-                  placeholder="Message" required></textarea>
-              </div>
-
-              <div class="col-md-12 text-center">
-                <div class="loading">Loading</div>
-                <div class="sent-message">Your message has been sent. Thank
-                  you!</div>
-
-                <input
-                  type="submit" data-wait="Please wait..."
-                  class="button primary w-button"
-                  value="Send Message" />
-              </div>
-
+          <form action="https://api.web3forms.com/submit" method="POST"
+          class="php-email-form" data-aos="fade-up" data-aos-delay="600"
+          id="contactForm">
+          <input type="hidden" name="access_key"
+            value="8e5b6033-c8f5-4372-a8fa-4ece4c8b61e1">
+          <input type="hidden" name="subject" value="New Contact Form Submission">  <!-- Add a default subject -->
+          <input type="hidden" name="redirect" value="thankyou.html"> <!-- Optional: Redirect after submission -->
+        
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control"
+                placeholder="Your Name" required>
             </div>
-          </form><!-- End Contact Form -->
+        
+            <div class="col-md-6">
+              <input type="email" name="email" class="form-control"
+                placeholder="Your Email" required>
+            </div>
+        
+            <div class="col-md-12">
+              <input type="text" class="form-control" name="user_subject" placeholder="Subject" required>
+            </div>
+        
+            <div class="col-md-12">
+              <textarea name="message" class="form-control" rows="6"
+                placeholder="Message" required></textarea>
+            </div>
+        
+            <div class="col-md-12 text-center">
+              <div class="loading">Loading</div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+              <input type="submit" class="button primary w-button">Send Message</input> <!-- Use a <button> for submit -->
+            </div>
+          </div>
+        </form><!-- End Contact Form -->
 
         </div>
 
