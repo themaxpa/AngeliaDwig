@@ -1,10 +1,52 @@
-/**
-* Template Name: Personal
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Updated: Nov 04 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contactForm');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Disable the submit button to prevent multiple submissions
+    const submitButton = form.querySelector('input[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.value = "Sending..."; // Optional: Change button text
+
+    const formData = new FormData(form);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'  // Important for receiving JSON response
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json(); // Parse the JSON response
+      } else {
+        throw new Error('Web3Forms submission failed.'); // Handle errors
+      }
+    })
+    .then(data => {
+      if (data.success) {
+        // Success! Show the success popup
+        alert('Message received successfully!'); // Or use a custom popup
+        form.reset(); // Clear the form
+      } else {
+        // Web3Forms indicated an error (e.g., spam)
+        alert('Error: ' + (data.message || 'Submission failed. Please try again.'));
+      }
+    })
+    .catch(error => {
+      // Network error or other exception
+      console.error('Error:', error);
+      alert('Error occurred during submission. Please try again later.');
+    })
+    .finally(() => {
+      // Re-enable the submit button
+      submitButton.disabled = false;
+      submitButton.value = "Send Message"; // Restore original button text
+    });
+  });
+});
 
 (function() {
   "use strict";
